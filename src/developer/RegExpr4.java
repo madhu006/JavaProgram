@@ -6,11 +6,16 @@ import java.util.regex.Pattern;
 public class RegExpr4 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 		
-		Pattern pat = Pattern.compile("W+");
-		Matcher mat = pat.matcher("W WW WWW");
+
+		final String IPADDRESS = "^([01]?\\d\\d?)\\." +
+				"([01]?\\d\\d?)\\." +
+				"([01]?)\\." +
+				"([01]?\\d)$";
+				
+		
+		Pattern pat = Pattern.compile(IPADDRESS);
+		Matcher mat = pat.matcher("199.169.0.10");
 		
 		while(mat.find()){
 			System.out.println("Match " +mat.group());
