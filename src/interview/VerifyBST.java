@@ -9,17 +9,17 @@ public class VerifyBST {
 		//   4
 		// 2   6
 		//1 3 5 7
-		Tree myTree = new Tree(4);
-		myTree.left = new Tree(2);
-		myTree.right = new Tree(6);
-		myTree.left.left = new Tree(1);
-		myTree.left.right = new Tree(3);
-		myTree.right.left = new Tree(7);//now we test a false case
-		myTree.right.right = new Tree(7);//made a typo sorry
+		Tree1 myTree = new Tree1(4);
+		myTree.left = new Tree1(2);
+		myTree.right = new Tree1(6);
+		myTree.left.left = new Tree1(1);
+		myTree.left.right = new Tree1(3);
+		myTree.right.left = new Tree1(7);//now we test a false case
+		myTree.right.right = new Tree1(7);//made a typo sorry
 		
 		//so this should be a binary search tree!
 		//please notice when we call the method from main block, we define the range as all possible integer values!
-		System.out.println("My tree is BST? "+IfBST(myTree, Integer.MIN_VALUE, Integer.MAX_VALUE));
+		System.out.println("My tree is BST? "+ IfBST(myTree, Integer.MIN_VALUE, Integer.MAX_VALUE));
 	}
 	
 	
@@ -28,7 +28,7 @@ public class VerifyBST {
 	//define method header
 	//Notice, the key of our algorithm is to keep track of the reasonable range for current focus node and its sub-trees
 	//So we need small and large as two range index values
-	public static boolean IfBST(Tree a, int small, int large)
+	public static boolean IfBST(Tree1 a, int small, int large)
 	{
 		//firstly, check if Tree is a valid tree node or null
 		if(a==null)
@@ -45,11 +45,11 @@ public class VerifyBST {
 }
 
 //firstly. we create a tree class for testing
-class Tree {
+class Tree1 {
 	public int value;
-	public Tree left;
-	public Tree right;
-	public Tree(int a)
+	public Tree1 left;
+	public Tree1 right;
+	public Tree1(int a)
 	{
 		value = a;
 		left=right=null;

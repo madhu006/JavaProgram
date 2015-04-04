@@ -16,7 +16,7 @@ public class TwentyFourGame
 		}
 		System.out.println("\nStart 24 computing: ");
 		//nums[0] = 9; nums[1] = 7; nums[2] = 10; nums[3] = 5; 
-		TwentyFourResult t = Solve24(nums);
+		TwentyFourResult1 t = Solve24(nums);
 		if(t.success)
 			System.out.println("Success: "+t.expression+"=24");
 		else
@@ -28,9 +28,9 @@ public class TwentyFourGame
 
 	//now to extend to four numbers!
 	//notice we accept integers as they are originally be, and each exp for each number at beginning are themselves
-	public static TwentyFourResult Solve24(int[] nums)
+	public static TwentyFourResult1 Solve24(int[] nums)
 	{
-		if(nums.length!=4) return new TwentyFourResult(false, "");//make sure it is a 4-number array
+		if(nums.length!=4) return new TwentyFourResult1(false, "");//make sure it is a 4-number array
 		//the idea is to select combination of two numbers, compute result and use 3-number method solve the remaining
 		boolean[] used = new boolean[4];//we define a support boolean array to keep track of usage
 		for(int i=0; i<4; i++)
@@ -57,7 +57,7 @@ public class TwentyFourGame
 				//the remaining work is to choose two number (nums[i]. nums[j]) and call the 3-num method
 				//we also cast the numbers for expression output for better readability
 				//need to change integer to String for next processing
-				TwentyFourResult t = Solve24(nums[i]+nums[j], b, c, (int)nums[i]+"+"+(int)nums[j], ""+(int)b, ""+(int)c);
+				TwentyFourResult1 t = Solve24(nums[i]+nums[j], b, c, (int)nums[i]+"+"+(int)nums[j], ""+(int)b, ""+(int)c);
 				if(t.success) return t;//always return immediately when a solution is found!
 				//for the order of number it makes difference if we put the sum at 1st and 3rd position because 
 				//for 3-num solve24 method, we only choose first two numbers for computing first
@@ -98,17 +98,17 @@ public class TwentyFourGame
 			used[i] = false;//set it back
 		}
 		//return a default false signal here
-		return new TwentyFourResult(false, "");
+		return new TwentyFourResult1(false, "");
 	}
 
 	//now we extend to three numbers
-	private static TwentyFourResult Solve24(double a, double b, double c, String expA, String expB, String expC)
+	private static TwentyFourResult1 Solve24(double a, double b, double c, String expA, String expB, String expC)
 	{
 		//System.out.println(expA+"\t"+expB+"\t"+expC);
 		//the idea is to arbitrary select first two numbers, compute results and let the defined 2-number method solve remaining
 		//also everytime check if success then stop immediately otherwise try more possible solutions
 		//try combine a+b
-		TwentyFourResult t = Solve24(a+b, c, expA+"+"+expB, expC);
+		TwentyFourResult1 t = Solve24(a+b, c, expA+"+"+expB, expC);
 		if(t.success)
 			return t;//when we find this works return!
 		t = Solve24(a-b, c, expA+"-"+expB, expC);
@@ -136,7 +136,7 @@ public class TwentyFourGame
 		if(t.success) return t;
 		
 		//otherwise return false signal
-		return new TwentyFourResult(false, "");//return as a failure
+		return new TwentyFourResult1(false, "");//return as a failure
 	}
 
 
@@ -145,32 +145,32 @@ public class TwentyFourGame
 	//think about 3,3,7,7 (3+3/7)*7=24, thus we need also a tolerance precision level like 0.001
 	//besides we need to remember the expression related to numbers, because some numbers may be computed from multiple numbers
 	static double precision = 0.001;
-	private static TwentyFourResult Solve24(double a, double b, String expA, String expB)
+	private static TwentyFourResult1 Solve24(double a, double b, String expA, String expB)
 	{
 		//we just try all possible +-*/ combination of two numbers to see if they are equal to 24
 		if(Math.abs(a+b-24)<precision)//if sum equals 24
-			return new TwentyFourResult(true, expA+"+"+expB);//just return expa+expb
+			return new TwentyFourResult1(true, expA+"+"+expB);//just return expa+expb
 		//repeat this for other operation, notice minus and divide has order so have to repeat for both orders
 		if(Math.abs(a-b-24)<precision)
-			return new TwentyFourResult(true, expA+"-("+expB+")");//add parenthesis to keep accuracy e.g. 25-(2-1)?
+			return new TwentyFourResult1(true, expA+"-("+expB+")");//add parenthesis to keep accuracy e.g. 25-(2-1)?
 		if(Math.abs(b-a-24)<precision)
-			return new TwentyFourResult(true, expB+"-("+expA+")");
+			return new TwentyFourResult1(true, expB+"-("+expA+")");
 		if(Math.abs(a*b-24)<precision)
-			return new TwentyFourResult(true, "("+expA+")*("+expB+")");//we add parenthesis in both sub-exps
+			return new TwentyFourResult1(true, "("+expA+")*("+expB+")");//we add parenthesis in both sub-exps
 		if(Math.abs(a/b-24)<precision)
-			return new TwentyFourResult(true, expA+"/("+expB+")");
+			return new TwentyFourResult1(true, expA+"/("+expB+")");
 		if(Math.abs(b/a-24)<precision)
-			return new TwentyFourResult(true, expB+"/("+expA+")");
+			return new TwentyFourResult1(true, expB+"/("+expA+")");
 		//otherwise
-		return new TwentyFourResult(false, "");//return as a failure
+		return new TwentyFourResult1(false, "");//return as a failure
 	}
 }
 //firstly define a class to encapsulate the return data (success or not, expression to compute 24)
-class TwentyFourResult
+class TwentyFourResult1
 {
 	boolean success;
 	String expression;
-	public TwentyFourResult(boolean suc, String exp)
+	public TwentyFourResult1(boolean suc, String exp)
 	{
 		success = suc;
 		expression = exp;

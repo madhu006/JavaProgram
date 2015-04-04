@@ -10,18 +10,18 @@ public class FindClosest
 		//    100
 		//  50   200
 		// 10 60 150 300
-		Tree myBST = new Tree(100);
-		myBST.left = new Tree(50);	myBST.right = new Tree(200);
-		myBST.left.left = new Tree(10);	myBST.left.right = new Tree(60);
-		myBST.right.left = new Tree(150);	myBST.right.right = new Tree(300);
+		Tree1 myBST = new Tree1(100);
+		myBST.left = new Tree1(50);	myBST.right = new Tree1(200);
+		myBST.left.left = new Tree1(10);	myBST.left.right = new Tree1(60);
+		myBST.right.left = new Tree1(150);	myBST.right.right = new Tree1(300);
 
 		System.out.println("Closest value in BST to 120 is "+GetClosest(myBST, 120));
 		System.out.println("Closest value in BST to 80 is "+GetClosest(myBST, 80));
 		System.out.println("Closest value in BST to 1000 is "+GetClosest(myBST, 1000));
 		System.out.println("Closest value in BST to 0 is "+GetClosest(myBST, 0));
 	}
-
-	//Authored by Xin Yao <singerdmx@gmail.com> 
+/*
+	
 	public static int getClosetTreeNode(TreeNode t, int v) {
 	  if (t == null)  {
 	   throw new IllegalArgumentException("Null input");
@@ -54,16 +54,16 @@ public class FindClosest
 	  
 	  return closetTreeNodeValue;
 	 }
-
+*/
 	//final method to declare, after we find the 'min diff' we return diff+v as returned value
-	public static int GetClosest(Tree t, int v)
+	public static int GetClosest(Tree1 t, int v)
 	{
 		int minDiff = Min_Diff(t, v);
 		return minDiff+v;
 	}
 
 	//now come to define the key method
-	public static int Min_Diff(Tree t, int v)
+	public static int Min_Diff(Tree1 t, int v)
 	{
 		//as we discussed in slides, the key of finding 'closest value' is to find the minimal diff
 		if(t == null)//make sure it is not an empty tree
@@ -87,8 +87,8 @@ public class FindClosest
 
 class Tree {
 	int value;
-	Tree left;
-	Tree right;
+	Tree1 left;
+	Tree1 right;
 	public Tree(int a)
 	{
 		value = a;

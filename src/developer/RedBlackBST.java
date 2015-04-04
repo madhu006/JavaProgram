@@ -33,6 +33,7 @@ package developer;
 
 import java.util.NoSuchElementException;
 import java.util.Queue;
+import java.util.Scanner;
 
 public class RedBlackBST<Key extends Comparable<Key>, Value> {
 
@@ -462,7 +463,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         int cmplo = lo.compareTo(x.key); 
         int cmphi = hi.compareTo(x.key); 
         if (cmplo < 0) keys(x.left, queue, lo, hi); 
-        if (cmplo <= 0 && cmphi >= 0) queue.enqueue(x.key); 
+        if (cmplo <= 0 && cmphi >= 0) queue.add(x.key); 
         if (cmphi > 0) keys(x.right, queue, lo, hi); 
     } 
 
@@ -554,8 +555,12 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     *****************************************************************************/
     public static void main(String[] args) { 
         RedBlackBST<String, Integer> st = new RedBlackBST<String, Integer>();
-        for (int i = 0; ! StdIn.isEmpty(); i++) {
-            String key = StdIn.readString();
+    	Scanner n = new Scanner(System.in);
+        
+        for (int i = 0; ! n.nextLine().isEmpty(); i++) {
+        	   String key = n.nextLine();
+               
+         //   String key = StdIn.readString();
             st.put(key, i);
         }
         for (String s : st.keys())

@@ -8,15 +8,15 @@ class ListIntersection
 	//let's create a test case
 	public static void main(String[] args)
 	{
-		List common = new List(10);
-		common.next = new List(11);//common intersection sub-list is 10>11
-		List list1 = new List(1);
-		list1.next = new List(2);
-		list1.next.next = new List(3);//first list starts with 1>2>3
+		List7 common = new List7(10);
+		common.next = new List7(11);//common intersection sub-list is 10>11
+		List7 list1 = new List7(1);
+		list1.next = new List7(2);
+		list1.next.next = new List7(3);//first list starts with 1>2>3
 		list1.next.next.next = common;//this list is 1>2>3>10>11
 
-		List list2 = new List(7);
-		list2.next = new List(8);
+		List7 list2 = new List7(7);
+		list2.next = new List7(8);
 		list2.next.next = common;//so the length is 7>8>10>11
 
 		list1.Print();
@@ -26,12 +26,12 @@ class ListIntersection
 	}
 	//now we define our improved method, naive method is simple so try yourself
 	//method head accept two lists and return a list
-	public static List Intersection(List a, List b)
+	public static List7 Intersection(List7 a, List7 b)
 	{
 		//as we discussed in slide, the first step is to find the diff of lengths of two lists
 		int aLength = 0;
 		int bLength = 0;
-		List cur = a;//cur is the pointer used to keep track of current focus node
+		List7 cur = a;//cur is the pointer used to keep track of current focus node
 		while(cur!=null)
 		{
 			aLength++;
@@ -69,17 +69,17 @@ class ListIntersection
 	}
 }
 //firstly we reuse the list definition in previous examples
-class List
+class List7
 {
-	List next;
+	List7 next;
 	int value;
-	public List(int k)
+	public List7(int k)
 	{
 		value = k;
 	}
 	public void Print()
 	{
-		List current = this;
+		List7 current = this;
 		while(current!=null)
 		{
 			System.out.print(current.value+"->");

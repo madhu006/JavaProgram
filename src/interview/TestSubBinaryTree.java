@@ -7,18 +7,19 @@ class TestSubBinaryTree
 	public static void main(String[] args)
 	{
 		//let's create a parent tree of 
+		
 		//   1
 		// 2  3
 		//   4 5
-		BinaryTree t1 = new BinaryTree(1);
-		t1.left =  new BinaryTree(2); t1.right =  new BinaryTree(3);
-		t1.right.left =  new BinaryTree(4);t1.right.right =  new BinaryTree(5);
+		BinaryTree1 t1 = new BinaryTree1(1);
+		t1.left =  new BinaryTree1(2); t1.right =  new BinaryTree1(3);
+		t1.right.left =  new BinaryTree1(4);t1.right.right =  new BinaryTree1(5);
 
 		//we create a subtree
 		// 3
 		//4 6
-		BinaryTree t2 = new BinaryTree(3);
-		t2.left =  new BinaryTree(4); t2.right =  new BinaryTree(6);
+		BinaryTree1 t2 = new BinaryTree1(3);
+		t2.left =  new BinaryTree1(4); t2.right =  new BinaryTree1(6);
 
 		//test for equal from reference view
 		if(ifSubTreeRef(t1, t1.left.right))//this time should be sub-tree
@@ -34,7 +35,7 @@ class TestSubBinaryTree
 	}
 
 	//now play with the harder case, check if subtree from values
-	public static boolean ifSubTreeValue(BinaryTree t1, BinaryTree t2)
+	public static boolean ifSubTreeValue(BinaryTree1 t1, BinaryTree1 t2)
 	{
 		//in this case we need firstly check if root values are equal, if so, we continue check children values
 		//for both trees until we find match or not, this step should be tried until a true signal returned or
@@ -57,7 +58,7 @@ class TestSubBinaryTree
 	}
 
 	//now we start from the simpler case, compare if a tree is another's subtree based on reference value
-	public static boolean ifSubTreeRef(BinaryTree t1, BinaryTree t2)
+	public static boolean ifSubTreeRef(BinaryTree1 t1, BinaryTree1 t2)
 	{
 		//the idea is simple, firstly check if t1 or t2 are null before comparing
 		if(t2==null)
@@ -71,12 +72,12 @@ class TestSubBinaryTree
 	}
 }
 //we firstly define a binary tree class
-class BinaryTree
+class BinaryTree1
 {
 	int value;
-	BinaryTree left;
-	BinaryTree right;
-	public BinaryTree(int k)
+	BinaryTree1 left;
+	BinaryTree1 right;
+	public BinaryTree1(int k)
 	{
 		value = k;
 	}
