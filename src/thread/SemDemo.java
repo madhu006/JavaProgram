@@ -11,9 +11,13 @@ import java.util.concurrent.*;
 
 public class SemDemo {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		Semaphore sem = new Semaphore(1);
+		sem.acquire();
+		sem.release();
+		
+		System.out.println("Available permit "+ sem.availablePermits());
 		
 		new IncThread(sem,"A");
 		new IncThread(sem,"B");
