@@ -39,6 +39,11 @@ public class RuntimePolymorphism {
 		
 		Motor referenceToMotor;
 		
+		//motorObject = busObject;
+		//motorObject.callme();
+		
+		
+		
 		referenceToMotor = motorObject;  // This is Runtime Polymorphism
 		referenceToMotor.callme(); //refers to Motor callme
 		
